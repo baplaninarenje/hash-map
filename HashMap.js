@@ -118,7 +118,6 @@ export default function HashMap() {
 
   return {
     print,
-    hash,
     set,
     get,
     has,
@@ -128,6 +127,5 @@ export default function HashMap() {
     keys,
     values,
     entries,
-    grow,
   };
 }
