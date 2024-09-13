@@ -12,11 +12,21 @@ export default function HashMap() {
     }
   }
 
+  function validateKeyType(key) {
+    if (typeof key !== 'string') {
+      throw new Error(
+        `Provided key [${key}] is type of: [${typeof key}] but it should be ` +
+          'type of string.'
+      );
+    }
+  }
+
   function print() {
     console.log(buckets);
   }
 
   function hash(key) {
+    validateKeyType(key);
     let hashCode = 0;
 
     const primeNumber = 31;
@@ -28,6 +38,7 @@ export default function HashMap() {
   }
 
   function set(key, value) {
+    validateKeyType(key);
     const index = hash(key);
 
     if (index < 0 || index >= buckets.length) {
@@ -51,6 +62,7 @@ export default function HashMap() {
   }
 
   function get(key) {
+    validateKeyType(key);
     const index = hash(key);
 
     if (index < 0 || index >= buckets.length) {
@@ -71,10 +83,12 @@ export default function HashMap() {
   }
 
   function has(key) {
+    validateKeyType(key);
     return get(key) ? true : false;
   }
 
   function remove(key) {
+    validateKeyType(key);
     let isRemoved = false;
     const index = hash(key);
 
